@@ -1,0 +1,38 @@
+<div class="row">
+  <div class="col-sm-6">
+    <br>
+    <table class="table">
+      <thead class="thead-dark">
+        <tr>
+          <th scope="col">Lp.</th>
+          <th scope="col">Nazwa</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr class="tr-row" *ngFor="let client of clients" (click)="onSelect(client)">
+          <td>{{client.id}}</td>
+          <td>{{client.name}}</td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+  <div class="col-sm-6">
+    <!--<form (ngSubmit)="onSubmit()" *ngIf="selectedClient">-->
+    <form *ngIf="selectedClient">
+      <div class="form-group">
+        <label for="name">Nazwa</label>
+        <input class="form-control" [(ngModel)]="selectedClient.name" type="text" id="name" name="name">
+
+        <label for="content">Opis</label>
+        <textarea class="form-control" style="resize: vertical;" [(ngModel)]="selectedClient.description" type="text" id="description" name="description" rows="10"></textarea>
+
+        <div class="form-group>">
+          <!--<button type="submit" class="col-sm-3 btn btn-primary">Zapisz</button>-->
+          <button class="col-sm-3 btn btn-primary" type="button" (click)="editClient()" >Edytuj <i class="fa fa-edit"></i></button>
+          <button class="col-sm-3 btn btn-success" type="button" (click)="addNewClient()">Dodaj nowy <i class="fa fa-plus-circle"></i></button>
+          <button class="col-sm-3 btn btn-warning" type="reset" (click)="onClear()">Wyczyść <i class="fa fa-eraser"></i></button>
+        </div>
+      </div>
+    </form>
+  </div>
+</div>

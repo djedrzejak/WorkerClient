@@ -1,0 +1,13 @@
+.tr-row:hover {
+  background-color: lightgray;
+}
+
+.thead-dark {
+  color: #000;
+  background-color: lightsteelblue;
+}
+
+.btn {
+  margin-top: 10px;
+  margin-right: 10px;
+}

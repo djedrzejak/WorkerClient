@@ -1,0 +1,104 @@
+<form (ngSubmit)="onSubmit()" *ngIf="task.id">
+    <div class="row">
+      <div class="col-md-12">
+        <div class="form-group ">
+          <label for="title">Projekt</label>
+          <input class="form-control" [(ngModel)]="task.title" type="text" id="title" name="title">
+        </div>
+      </div>
+    </div>
+
+    <div class="row">
+      <div class="col-md-12">
+        <div class="form-group">
+          <label for="content">Opis</label>
+          <textarea class="form-control" [(ngModel)]="task.content" type="text" id="content" name="content"></textarea>
+        </div
+      ></div>
+    </div>
+
+    <div class="row">
+
+      <div class="form-group col-md-4">
+        <label for="client">Klient</label>
+        <select class="form-control" [(ngModel)]="task.client.id" id="client" name="client">
+          <option *ngFor="let c of clients" [value]="c.id">{{c.name}}</option>>
+        </select>
+      </div>
+
+      <div class="form-group col-md-4">
+          <label for="priority">Priorytet</label>
+          <select class="form-control" [(ngModel)]="task.priority.id" id="priority" name="priority">
+            <option *ngFor="let p of priorities" [value]="p.id">{{p.description}}</option>>
+          </select>
+        </div>
+
+      <div class="form-group col-md-4">
+        <label for="status">Status</label>
+        <select class="form-control" [(ngModel)]="task.status.id" id="status" name="status">
+          <option *ngFor="let s of statuses" [value]="s.id">{{s.description}}</option>>
+        </select>
+      </div>
+
+    </div>
+
+    <div class="row">
+
+      <div class="form-group col-md-4">
+          <label for="price">Cena</label>
+          <input class="form-control" [(ngModel)]="task.price" type="number" id="price" name="price">
+        </div>
+
+      <div class="form-group col-md-1">
+        <label for="price">Postęp</label>
+        <input class="form-control" [(ngModel)]="task.progress" type="number" min="0" max="100" id="progress" name="progress">
+      </div>
+
+      <div class="form-group col-md-5">
+        <label for="process">Pasek postępu</label>
+        <div class="progress">
+            <div class="progress-bar" [ngStyle]="{'width.%': this.task.progress}">{{task.progress}} %</div>
+        </div>
+      </div>
+
+      <div class="col-md-2">
+        <div class="custom-control custom-switch">
+          <input type="checkbox" class="custom-control-input" [(ngModel)]="task.paid" id="paid" name="paid" value="task.paid">
+          <label class="custom-control-label" for="paid">Rozliczone</label>
+        </div>
+      </div>
+
+    </div>
+
+    <div class="form-group col-xs-12">
+        <button type="submit" class="col-md-1 col-sm-2 btn btn-primary no-spinners">Zmień <i class="fa fa-edit"></i></button>
+    </div>
+</form>
+
+    <!--
+    <div class="form-group col-md-2 col-sm-4">
+        <label for="createDate">Data utworzenia</label>
+        <input class="form-control" [ngModel]="task.createDate | date:'yyyy-MM-dd'" (ngModelChange)="task.createDate=$event" type="text" id="createDate" name="createDate">
+    </div>
+    -->
+
+<div class="row">
+    <span class="heading">Komentarze:</span>
+    <ul class="comments">
+      <li *ngFor="let c of comments; let i = index">
+        <div><span class="badge ">{{i+1}}</span> {{c.createDate | date:'yyyy-MM-dd'}} <button type="button" class="delete_button btn" (click)="deleteComment(c.id)"><i class="fa fa-trash"></i></button></div>
+        <div class="comments">{{c.content}}</div>
+      </li>
+    </ul>
+</div>
+
+<div class="row">
+    <span class="heading">Dodawanie nowego komentarz</span>
+    <textarea class="form-control" [(ngModel)]="newComment.content" type="text" id="content" name="content"></textarea>
+    <button type="button" class="btn btn-success" (click)="addNewComment()">Dodaj komentarz <i class="fa fa-plus-circle"></i></button>
+</div>
+<div class="filler"></div>
+<div class="row">
+  <button type="button" class="btn btn-secondary" [routerLink]="['/tasks']"><i class="fa fa-angle-left"></i> Powrót</button>
+</div>
+<div class="filler"></div>

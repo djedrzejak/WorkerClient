@@ -1,15 +1,18 @@
 import { Priority } from './priority';
-import { Settlement } from './settlement';
 import { Status } from './status';
 import { Client } from './client';
 
-export interface Task {
+export class Task {
   id: number;
   title?: string;
   content?: string;
   price?: number;
-  priority: Priority;
-  settlement: Settlement;
+  priority?: Priority;
   status?: Status;
-  client: Client;
+  client?: Client;
+  progress: number;
+  paid: boolean;
+  createDate?: Date;
+  closeDate?: Date;
+  comments: Comment[] = [];
 }

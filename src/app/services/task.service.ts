@@ -1,12 +1,12 @@
 import { Injectable } from '@angular/core';
-import { Task } from './model/task';
+import { Task } from '../model/task';
 import { HttpClient } from '@angular/common/http';
 import { Observable } from 'rxjs';
 
 @Injectable({
   providedIn: 'root'
 })
-export class HttpService {
+export class TaskService {
 
   constructor(private http: HttpClient) { }
 
@@ -18,7 +18,16 @@ export class HttpService {
     return this.http.get<Task>('http://localhost:8080/tasks/' + id);
   }
 
-  addTask(task: Task) {
+  saveTask(task: Task): Observable<Task> {
+    return this.http.post<Task>('http://localhost:8080/tasks', task);
+  }
 
+  updateTask(task: Task): Observable<Task> {
+    return this.http.put<Task>('http://localhost:8080/tasks/' + task.id, task);
+  }
+
+  deleteTask(id: number) {
+    return this.http.delete<Task>('http://localhost:8080/tasks/' + id);
   }
 }
+

@@ -1,27 +1,9 @@
-<button (click)="getTasks()">Pokaż wszystkie zadania</button><br>
-<!--<button (click)="getTask(idTask)">Get task id 3</button><input type="number" #idTask><br>-->
-<br>
-Lista<br>
-<br>
-<table>
-  <tr>
-    <th>Lp</th>
-    <th>Projekt</th>
-    <th>Opis</th>
-    <th>Cena</th>
-    <th>Priorytet</th>
-    <th>Rozliczenie</th>
-    <th>Status</th>
-    <th>Klient</th>
-  </tr>
-  <tr *ngFor="let task of tasks">
-    <td>{{task.id}}</td>
-    <td>{{task.title}}</td>
-    <td>{{task.content}}</td>
-    <td>{{task.price}}</td>
-    <td>{{task.priority?.description}}</td>
-    <td>{{task.settlement?.description}}</td>
-    <td>{{task.status?.description}}</td>
-    <td>{{task.client.name}}</td>
-  </tr>
-</table>
+<div class="container">
+  <nav class="nav nav-pills">
+    <a class="nav-link" routerLink="/home" routerLinkActive="active">Główna</a>
+    <a class="nav-link" routerLink="/tasks" routerLinkActive="active">Projekty</a>
+    <a class="nav-link" routerLink="/clients" routerLinkActive="active">Klienci</a>
+  </nav>
+  <br>
+  <router-outlet></router-outlet>
+</div>
