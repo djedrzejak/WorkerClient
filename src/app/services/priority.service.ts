@@ -11,7 +11,7 @@ export class PriorityService {
   constructor(private http: HttpClient) { }
 
   getPriorities(): Observable<Array<Priority>> {
-    return this.http.get<Array<Priority>>('http://localhost:8080/priorities');
+    return this.http.get<Array<Priority>>('http://djedrzejak-worker-manager-serv.herokuapp.com/priorities');
   }
 
 }

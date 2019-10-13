@@ -11,14 +11,14 @@ export class CommentService {
   constructor(private http: HttpClient) { }
 
   getCommentsByTaskId(taskId: number): Observable<Array<Comment>> {
-    return this.http.get<Array<Comment>>('http://localhost:8080/comments/' + taskId);
+    return this.http.get<Array<Comment>>('http://djedrzejak-worker-manager-serv.herokuapp.com/comments/' + taskId);
   }
 
   saveCOmment(comment: Comment): Observable<Comment> {
-    return this.http.post<Comment>('http://localhost:8080/comments', comment);
+    return this.http.post<Comment>('http://djedrzejak-worker-manager-serv.herokuapp.com/comments', comment);
   }
 
   deleteComment(id: number) {
-    return this.http.delete<Comment>('http://localhost:8080/comments/' + id);
+    return this.http.delete<Comment>('http://djedrzejak-worker-manager-serv.herokuapp.com/comments/' + id);
   }
 }

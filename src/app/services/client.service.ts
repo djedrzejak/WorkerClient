@@ -11,14 +11,14 @@ export class ClientService {
   constructor(private http: HttpClient) { }
 
   getClients(): Observable <Array<Client>> {
-    return this.http.get<Array<Client>>('http://localhost:8080/clients');
+    return this.http.get<Array<Client>>('http://djedrzejak-worker-manager-serv.herokuapp.com/clients');
   }
 
   saveClient(client: Client): Observable<Client> {
-    return this.http.post<Client>('http://localhost:8080/clients', client);
+    return this.http.post<Client>('http://djedrzejak-worker-manager-serv.herokuapp.com/clients', client);
   }
 
   updateClient(client: Client): Observable<Client> {
-    return this.http.put<Client>('http://localhost:8080/clients/' + client.id, client);
+    return this.http.put<Client>('http://djedrzejak-worker-manager-serv.herokuapp.com/clients/' + client.id, client);
   }
 }

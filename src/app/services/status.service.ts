@@ -11,7 +11,7 @@ export class StatusService {
   constructor(private http: HttpClient) { }
 
   getStatuses(): Observable<Array<Status>> {
-    return this.http.get<Array<Status>>('http://localhost:8080/statuses');
+    return this.http.get<Array<Status>>('http://djedrzejak-worker-manager-serv.herokuapp.com/statuses');
   }
 
 }
